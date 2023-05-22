@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+	<link href="~/css/login.css" rel="stylesheet" />
+	<link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+	<header style="background-color:black">
+		<h1 style="background-color:black; color:wheat; margin-bottom:0px">Login</h1>
+	</header>
+	<main>
+		<form id="login_form" class="form_class" action="Login" method="post">
+			<div class="form_div">
+				<label style="background:none">Login:</label>
+				<input class="field_class" name="login_txt" type="text" placeholder="Enter your username" autofocus>
+				</br>
+				<label>Password:</label>
+				<input id="pass" class="field_class" name="password_txt" type="password" placeholder="Enter your password">
+				</br>
+				<button class="submit_class" type="submit" form="login_form">Login</button>
+			</div>
+			<div class="info_div">
+				<p>Do not have an account? <a asp-controller="Account" asp-action="Signup">Sign up now!</a></p>
+			</div>
+		</form>
+	</main>
+</body>

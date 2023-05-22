@@ -1,0 +1,97 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+	<link href="~/css/detail.css" rel="stylesheet" />
+</head>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+	.card .card-body h3 {
+		font-family: "Inter", sans-serif;
+	}
+
+	.form_class {
+		width: 500px;
+		padding: 40px;
+		border-radius: 8px;
+		background-color: white;
+		font-family: 'system-ui';
+		box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+		margin-left: 5% !important;
+	}
+
+	.form_div {
+		text-transform: uppercase;
+	}
+
+		.form_div > label {
+			letter-spacing: 3px;
+			font-size: 1rem;
+		}
+
+	.field_class {
+		width: 100%;
+		border-radius: 6px;
+		border-style: solid;
+		border-width: 1px;
+		padding: 5px 0px;
+		text-indent: 6px;
+		margin-top: 10px;
+		margin-bottom: 20px;
+		font-family: 'system-ui';
+		font-size: 0.9rem;
+		letter-spacing: 2px;
+	}
+
+	.submit_class {
+		border-style: none;
+		border-radius: 5px;
+		background-color: #FFE6D4;
+		padding: 8px 20px;
+		font-family: 'system-ui';
+		text-transform: uppercase;
+		letter-spacing: .8px;
+		display: block;
+		margin: auto;
+		margin-top: 10px;
+		box-shadow: 2px 2px 5px rgb(0,0,0,0.2);
+		cursor: pointer;
+	}
+</style>
+<div class="container">
+	<div class="card">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-lg-5 col-md-5 col-sm-6">
+					<div class="white-box text-center" style="padding-bottom:25%"><img src="@ViewBag.Product.Image" class="img-responsive" style="width:100% !important"></div>
+				</div>
+				<div class="col-lg-7 col-md-7 col-sm-6">
+					@*<h3 class="card-title">@ViewBag.Product.Name</h3>
+					<h6 class="card-subtitle">@ViewBag.Product.Author</h6>*@
+					<p>@ViewBag.Product.Description</p>
+					<form asp-controller="Product" asp-action="Edit" asp-route-uid="@ViewBag.Id" class="form_class">
+						<div class="form_div">
+							<label style="background:none">Name:</label>
+							<input value="@ViewBag.Product.Poster" name="pro_poster_txt" hidden></input>
+							<input value="@ViewBag.Product.Id" name="pro_id_txt" hidden></input>
+							<input class="field_class" value="@ViewBag.Product.Name" name="pro_name_txt" type="text" placeholder="Enter name Light novel" autofocus>
+							</br>
+							<label>Author:</label>
+							<input class="field_class" value="@ViewBag.Product.Author" name="pro_author_txt" type="text" placeholder="Enter author name">
+							</br>
+							<label>Link image:</label>
+							<input class="field_class" value="@ViewBag.Product.Image" name="pro_image_txt" type="text" placeholder="Copy link of image">
+							</br>
+							<label>Description:</label>
+							<textarea class="field_class" name="pro_des_txt">@ViewBag.Product.Description</textarea>
+							<button class="submit_class" type="submit">Edit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

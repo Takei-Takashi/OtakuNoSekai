@@ -1,8 +1,75 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+	List<Product> randomProducts = ViewBag.RandomProducts;
 }
 
-<div class="text-center">
+@*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</div>*@
+<body>
+
+	<!-- ======= Header ======= -->
+	<!-- End Header -->
+	<!-- ======= Hero Section ======= -->
+	<section id="hero" class="hero d-flex align-items-center section-bg" style="padding-top: 60px !important">
+		<div class="container">
+			<div class="row justify-content-between gy-5">
+				<div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+					<h2 data-aos="fade-up">@ViewBag.Pro.Name</h2>
+					<div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+						<a asp-controller="Product" asp-action="Detail" asp-route-id="@ViewBag.Pro.Id" class="btn-book-a-table">Detail</a>
+					</div>
+				</div>
+				<div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+					<img src="@ViewBag.Pro.Image" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+				</div>
+			</div>
+		</div>
+	</section><!-- End Hero Section -->
+
+	<main id="main">
+		<!-- ======= Menu Section ======= -->
+		<section id="menu" class="menu">
+			<div class="container" data-aos="fade-up">
+				<div class="section-header">
+					<h2>Our Library</h2>
+					<p>Check Our <span>Otaku Menu</span></p>
+				</div>
+				<div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+					<div class="tab-pane fade active show" id="menu-starters">
+						<div class="row gy-5">
+							@foreach (var product in randomProducts)
+							{
+								<div class="col-lg-4 menu-item">
+									<a href="@product.Image" class="glightbox"><img src="@product.Image" class="menu-img img-fluid" alt=""></a>
+									<h4>@product.Name</h4>
+									<p class="ingredients">
+										@product.Author
+									</p>
+									<a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id" class="btn-book-a-table">Detail</a>
+								</div>
+								<!-- Menu Item -->
+							}
+						</div>
+					</div><!-- End Starter Menu Content -->
+				</div>
+			</div>
+		</section><!-- End Menu Section -->
+	</main><!-- End #main -->
+	<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+	<div id="preloader"></div>
+
+	<!-- Vendor JS Files -->
+	<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/vendor/aos/aos.js"></script>
+	<script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="~/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="~/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="~/js/main.js"></script>
+
+</body>
